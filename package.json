@@ -1,0 +1,36 @@
+{
+  "name": "pupsi",
+  "version": "0.0.1",
+  "description": "Provide the ultimative single api point for the frontend. Designed to be used with SQL. Get nested data and benefit from automatic sql table joining.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stylefieber/module_pupsi.git"
+  },
+  "keywords": [
+    "sql",
+    "query",
+    "json",
+    "nest",
+    "nested",
+    "api",
+    "express",
+    "mysql",
+    "mssql",
+    "json-sql"
+  ],
+  "author": "Alexander Zerling",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stylefieber/module_pupsi/issues"
+  },
+  "homepage": "https://github.com/stylefieber/module_pupsi#readme",
+  "dependencies": {
+    "json-sql": "^0.3.11",
+    "lodash": "^4.17.4",
+    "treeize": "^2.1.2"
+  }
+}
