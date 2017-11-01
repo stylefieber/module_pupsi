@@ -1,12 +1,10 @@
 #PUPSI
 
-##
 Still aplha and in active development. It should not used in production!
-
+##
 
 #What is pupsi?
 
-##
 Pupsi provides single API points for fetching and setting data. It is designed to be used for SQL.
 
 
@@ -61,7 +59,7 @@ NOW, imagine the frontend could just send this:
 Pupsi takes this object, creates a SQL query and returns nested data to the frontend. Efficiently.
 
 The frontend can easily define, which fields should be fetched AND which related data should be fetched.
-
+##
 
 #But what has the backend to do then?
 
