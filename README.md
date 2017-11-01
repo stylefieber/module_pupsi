@@ -13,12 +13,19 @@ Pupsi provides single API points for fetching and setting data. It is designed t
 Let's take this typical backend-frontend talk between developers.
 
 Frontend: Hey bro, could you provide some data?
+
 Backend: Yes, sure.
+
 ...
+
 Backend: Finished.
+
 ...
+
 Frontend: Okay nice, could youe please add some fields. I need it here. Ah and please add the related object xy. Please nest it.
+
 Backend: Uhm.. okay.
+
 
 Now, the backend gives full control of what the frontend can fetch.
 
@@ -29,23 +36,25 @@ efficient. So the backend would provide a specific API point to fetch all data t
 
 NOW, imagine the frontend could just send this:
 
+```javascript
 {
   "user": {
-  	"fields": ["username"],
-  	"condition": { "id": 1 },
-  	"join": {
-  		"images": {
+    "fields": ["username"],
+    "condition": { "id": 1 },
+    "join": {
+        "images": {
         "fields": ["url", "views"],
-  			"type": "left",
-  			"join": {
-  				"images_comments": {
-  					"type": "left"
-  				}
-  			}
-  		}
-  	}
+        "type": "left",
+        "join": {
+          "images_comments": {
+            "type": "left"
+          }
+        }
+      }
+    }
   }
 }
+```
 
 Pupsi takes this object, creates a SQL query and returns nested data to the frontend. Efficiently.
 
