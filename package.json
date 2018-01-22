@@ -1,6 +1,6 @@
 {
   "name": "pupsi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Provide the ultimative single api point for the frontend. Designed to be used with SQL. Get nested data and benefit from automatic sql table joining.",
   "main": "index.js",
   "scripts": {

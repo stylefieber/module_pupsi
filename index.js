@@ -22,13 +22,32 @@ module.exports = function(paramConfig) {
 
     var jsonSql = require('json-sql')(config.jsonSqlOptions)
 
+    module.getDataRaw = async function(data) {
+        var result = {}
+
+        var level
+        var uid
+
+        for (item in data) {
+            try {
+                var as = item
+                if (data[item].as) as = data[item].as
+                result[as] = await getTableData(item, data[item], level, uid)
+            } catch(err) {
+                res.send(err)
+                throw err
+            }
+        }
+        return result
+    }
+
     module.getData = async function(req, res) {
         var data = req.body
 
         var result = {};
 
-        var level;
-        var uid;
+        var level
+        var uid
         if (req.level) level = req.level
         if (req.uid) uid = req.uid
 
@@ -74,8 +93,8 @@ module.exports = function(paramConfig) {
             fields = allowedFields
         }
 
-        fieldNameManipulator(fields, as);
-        condition = conditionNameManipulator(condition, as);
+        fieldNameManipulator(fields, as)
+        condition = conditionNameManipulator(condition, as)
         console.dir(condition);
         addRowIdentifier(fields, as, model.primaryKey, '')
 
@@ -142,9 +161,6 @@ module.exports = function(paramConfig) {
         else {
             fields = allowedFields
         }
-        if (modelName == 'images_comments') {
-            console.dir(fields);
-        }
         joinFieldNameManipulator(fields, paramFields, as, queryObject.as)
         addRowIdentifier(paramFields, as, model.primaryKey, queryObject.as + ":")
 
@@ -188,11 +204,23 @@ module.exports = function(paramConfig) {
     }
 
     function addRowIdentifier(paramFields, tableAlias, field, prefix, parentObjectName) {
-        paramFields.push(tableAlias + '.' + field + " AS '" + prefix + field + "*'");
+        paramFields.push(tableAlias + '.' + field + " AS '" + prefix + field + "*'")
     }
 
     module.setData = async function() {
 
+    }
+
+    module.createData = async function(req, res) {
+        var data = req.body
+        var result = {};
+
+        var level
+        var uid
+        if (req.level) level = req.level
+        if (req.uid) uid = req.uid
+
+        if (!models[modelName]) throw("model " + modelName + " does not exist")
     }
 
     return module;
