@@ -34,7 +34,6 @@ module.exports = function(paramConfig) {
                 if (data[item].as) as = data[item].as
                 result[as] = await getTableData(item, data[item], level, uid)
             } catch(err) {
-                res.send(err)
                 throw err
             }
         }
